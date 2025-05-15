@@ -1,5 +1,6 @@
 import data_loading
 import json
+import matplotlib.pyplot as plt
 from transformers import Wav2Vec2CTCTokenizer
 from transformers import Wav2Vec2FeatureExtractor
 from transformers import Wav2Vec2Processor
@@ -7,16 +8,10 @@ from transformers import Wav2Vec2ForCTC
 
 processor = None
 
-def load_vocab(vocab_filename = 'vocab.json'):
-    ''' load the vocabulary used for finetuning.'''
-    with open(vocab_filename) as fin:
-        vocab = json.load(fin)
-    return vocab
 
 def load_tokenizer(vocab_filename = 'vocab.json'):
     ''' load the tokenizer used for finetuning.'''
-    vocab = load_vocab(vocab_filename)
-    tokenizer = Wav2Vec2CTCTokenizer(vocab, unk_token = '[UNK]', 
+    tokenizer = Wav2Vec2CTCTokenizer(vocab_filename, unk_token = '[UNK]', 
         pad_token = '[PAD]',word_delimiter_token = '|')
     return tokenizer
 
@@ -46,15 +41,57 @@ def _preprocess_item(item):
         sampling_rate = audio['sampling_rate']).input_values[0]
     item['input_length'] = len(item['input_values'])
 
-    with processor.as_target_processor():
-        item['labels'] = processor(item['sentence']).input_ids
+    item['labels'] = processor(text = item['sentence']).input_ids
     return item
 
 def preprocess_dataset(dataset = None, vocab_filename = 'vocab.json'):
     ''' load the dataset and preprocess it.'''
     if dataset is None:
-        dataset = data_loading.load_dataset()
-    processor = load_processor(vocab_filename)
-    dataset = list(map(_preprocess_item, dataset))
+        dataset = data_loading.load_dataset_with_audio()
+    _ = load_processor(vocab_filename)
+    dataset = dataset.map(_preprocess_item,
+        remove_columns = dataset.column_names)
     return dataset
+
+#inspect data
+
+def load_vocab(vocab_filename = 'vocab.json'):
+    ''' load the vocabulary used for finetuning.'''
+    with open(vocab_filename) as fin:
+        vocab = json.load(fin)
+    return vocab
+
+def input_ids_to_text(input_ids, vocab_filename = 'vocab.json'):
+    ''' convert the input ids to text.'''
+    processor = load_processor(vocab_filename)
+    temp = processor.batch_decode(input_ids, skip_special_tokens=True)
+    text = ''
+    for char in temp:
+        if char: text += char
+        else: text += ' '
+    return text
+
+def plot_array(input_values):
+    ''' plot the array.'''
+    plt.ion()
+    plt.plot(input_values)
+    plt.xlabel('Time (s)')
+    plt.ylabel('Normalized amplitude')
+    xticks = plt.gca().get_xticks()
+    plt.xticks(xticks, xticks / 16000)
+    plt.xlim(0, len(input_values)) 
+    plt.show()
+
+def show_item(example_index = 0, dataset = None, vocab_filename = 'vocab.json'):  
+    ''' show the item at example_index.'''
+    if dataset is None:
+        dataset = preprocess_dataset()
+    example = dataset[example_index]
+    plot_array( example['input_values'] )
+    text = input_ids_to_text(example['labels'], vocab_filename)
+    print(f'label: {example["labels"]}')
+    print(f'text:  {''.join(text)}')
+    print(f'vocab: {load_vocab()}')
+    
+    
 

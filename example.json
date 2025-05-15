@@ -1,0 +1,124 @@
+{
+    "data": [
+        {
+            "sentence": "het zegt mij helemaal niks hoor",
+            "start_time": 878.57,
+            "end_time": 880.03,
+            "filename": "DVA4C.wav",
+            "channel": 2,
+            "overlap": false,
+            "speaker": "G",
+            "duration": 1.46
+        },
+        {
+            "sentence": "funk",
+            "start_time": 880.24,
+            "end_time": 880.73,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": true,
+            "speaker": "C",
+            "duration": 0.49
+        },
+        {
+            "sentence": "nee nee",
+            "start_time": 880.7,
+            "end_time": 881.79,
+            "filename": "DVA4C.wav",
+            "channel": 2,
+            "overlap": true,
+            "speaker": "G",
+            "duration": 1.09
+        },
+        {
+            "sentence": "nou funk is een beetje nou soul weet je",
+            "start_time": 880.73,
+            "end_time": 882.61,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": true,
+            "speaker": "C",
+            "duration": 1.88
+        },
+        {
+            "sentence": "beetje Aretha Franklin dat soort dingen James Brown",
+            "start_time": 882.61,
+            "end_time": 884.71,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": false,
+            "speaker": "C",
+            "duration": 2.1
+        },
+        {
+            "sentence": "een beetje dans dans dansbare muziek",
+            "start_time": 884.71,
+            "end_time": 886.68,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": true,
+            "speaker": "C",
+            "duration": 1.97
+        },
+        {
+            "sentence": "nee",
+            "start_time": 885.26,
+            "end_time": 885.78,
+            "filename": "DVA4C.wav",
+            "channel": 2,
+            "overlap": true,
+            "speaker": "G",
+            "duration": 0.52
+        },
+        {
+            "sentence": "een beetje laten we zeggen",
+            "start_time": 886.68,
+            "end_time": 888.36,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": true,
+            "speaker": "C",
+            "duration": 1.68
+        },
+        {
+            "sentence": "ja maar uh maar",
+            "start_time": 887.59,
+            "end_time": 888.88,
+            "filename": "DVA4C.wav",
+            "channel": 2,
+            "overlap": true,
+            "speaker": "G",
+            "duration": 1.29
+        },
+        {
+            "sentence": "is er niet dansbare muziek",
+            "start_time": 889.8,
+            "end_time": 892.06,
+            "filename": "DVA4C.wav",
+            "channel": 2,
+            "overlap": false,
+            "speaker": "G",
+            "duration": 2.26
+        },
+        {
+            "sentence": "ja",
+            "start_time": 893.25,
+            "end_time": 893.64,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": false,
+            "speaker": "C",
+            "duration": 0.39
+        },
+        {
+            "sentence": "nou ja goed de ene muziek is wat meer opzwepend",
+            "start_time": 893.64,
+            "end_time": 896.0,
+            "filename": "DVA4C.wav",
+            "channel": 1,
+            "overlap": false,
+            "speaker": "C",
+            "duration": 2.36
+        }
+    ]
+}
