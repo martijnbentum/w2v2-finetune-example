@@ -42,6 +42,7 @@ def play_example(example_index = 0, filename = 'example.json', plot = False):
 def plot_audio(audio):
     '''visualize the audio signal.'''
     plt.ion()
+    plt.clf()
     plt.plot(audio)
     xticks = plt.gca().get_xticks()
     plt.xticks(xticks, xticks / 16000)
