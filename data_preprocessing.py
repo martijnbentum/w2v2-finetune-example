@@ -8,7 +8,6 @@ from transformers import Wav2Vec2ForCTC
 
 processor = None
 
-
 def load_tokenizer(vocab_filename = 'vocab.json'):
     ''' load the tokenizer used for finetuning.'''
     tokenizer = Wav2Vec2CTCTokenizer(vocab_filename, unk_token = '[UNK]', 
