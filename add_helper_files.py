@@ -1,4 +1,3 @@
-from . import locations
 import os
 import shutil
 from pathlib import Path
@@ -8,7 +7,6 @@ helper_files = ['preprocessor_config.json',
     'tokenizer_config.json',
     'vocab.json']
 
-
 def helper_files_present(checkpoint_dir):
     checkpoint_dir = Path(checkpoint_dir)
     for f in helper_files:
@@ -16,8 +14,7 @@ def helper_files_present(checkpoint_dir):
             return False
     return True
 
-def add_helper_files(checkpoint_dir, transcription = None,
-    helper_files_directory = 'helper_files/'):
+def add_helper_files(checkpoint_dir, helper_files_directory = 'helper_files/'):
     helper_files_directory = Path(helper_files_directory)
     checkpoint_dir = Path(checkpoint_dir)
     if not checkpoint_dir.exists():
